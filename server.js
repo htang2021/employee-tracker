@@ -7,7 +7,7 @@ const { viewAllEmployees,
 
 const entrySelect = ['View All Employees', 'View All Departments', 'View All Roles', 
     'Add A Department', 'Add A Role', 'Add An Employee', 
-    'Update Employee Role', 'Update Employee Manager'];
+    'Update Employee Role', 'Update Employee Manager', 'Quit'];
 
 // calls the module to print the app name
 printToScreen.appName();
