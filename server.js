@@ -60,5 +60,5 @@ promptUserChoice()
         } else if (choice.selectedOption === 'View All Roles') {
             viewAllRoles();
         }
-    })
-    .then()
+    });
+    // .then()
