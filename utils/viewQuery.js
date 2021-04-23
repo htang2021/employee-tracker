@@ -13,7 +13,7 @@ function viewAllEmployees() {
 
     const sql = `SELECT employee2.id AS employee_id, employee2.first_name, 
     employee2.last_name, role.title, department.dept_name, role.salary,
-    CONCAT(manager.first_name, ' ', manager.last_name) as Manager_Name
+    CONCAT(manager.first_name, ' ', manager.last_name) AS Manager_Name
     FROM employee employee2
     JOIN employee manager 
     ON employee2.manager_id = manager.id
