@@ -27,9 +27,10 @@ function viewAllEmployees() {
             console.log(err.message );
             return;
         }
-        console.table(rows);
+        console.log(' ');
+        return console.table(rows); 
     });
-    return;
+    // return;
 }
 
 function viewAllDepartments() {
@@ -40,7 +41,26 @@ function viewAllDepartments() {
             console.log(err.message );
             return;
         }
+        let newArry = json(rows);
+        console.log('*************');
+        console.log(newArry);
+        console.log('===============');
+
+        let rowsObjArry = JSON.stringify(rows);
+        console.log('');
+        console.log(rowsObjArry);
+        let newRowObj = rowsObjArry.split('}');
+        console.log(newRowObj);
+
+        console.log(rowsObjArry[0], rowsObjArry[1], rowsObjArry[2]);
+
+        // rowsObjArry.forEach(element => {
+        //     console.log(element.dept_name);
+        // });
+
+        console.log(' ');
         console.table(rows);
+        // return rowsObj;
     });
 }
 
@@ -52,7 +72,9 @@ function viewAllRoles() {
             console.log(err.message );
             return;
         }
+        console.log(' ');
         console.table(rows);
+        return;
     });
 }
 
