@@ -24,14 +24,14 @@ VALUES ('CEO', 320000, 1),
     ('HR Associate', 80000, 2),
     ('Senior Engineer', 150000, 4),
     ('Staff Engineer', 180000, 4),
-    ('Sales Manager', 80000, 3),
+    ('Sales Manager', 80000, 7),
     ('Engineering Manager', 180000, 4),
     ('Director, Product', 220000, 9),
     ('Product Manager', 160000, 9),
     ('Procurement Manager', 130000, 6);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Hung', 'CEO', 1, 0),
+VALUES ('Hung', 'CEO', 1, 1),
     ('Erica', "VPEngineering", 6, 1),
     ('Sam', 'MarketingVP', 4, 1),
     ('Phil', 'MarketingAssociate', 9, 3),
