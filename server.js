@@ -11,7 +11,7 @@ const { addAdepartment,
 
 const { exclude } = require('inquirer/lib/objects/separator');
 
-// const {} = require('./utils/updateQuery');
+const {updateEmployee} = require('./utils/updateQuery');
 
     // let departments = JSON.parse(viewAllDepartments);
     // console.log(viewAllDepartments);
