@@ -6,7 +6,8 @@ const connection = require('../db/connection');
 function updateEmployee(role) {
 
     const sql = `UPDATE employee
-            SET role_id = 
+            SET role_id = ${role.role_id}, manager_id = ${role.manager_id}
+            WHERE 
     `;
     connection.query(sql, (err, rows) => {
         if (err) {
@@ -14,7 +15,7 @@ function updateEmployee(role) {
             return;
         }
         console.log('');
-        console.log('Department has been added to the database.');
+        console.log("Employee's role has been updated to the database.");
         console.table(rows); 
     });
 }
