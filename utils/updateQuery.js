@@ -3,10 +3,10 @@ const cTable = require('console.table');
 
 const connection = require('../db/connection');
 
-function updateEmployee(dataUpdate) {
+function updateEmployee(role) {
 
     const sql = `UPDATE employee
-            VALUES ('${dept.deptName}')
+            SET role_id = 
     `;
     connection.query(sql, (err, rows) => {
         if (err) {

@@ -25,7 +25,7 @@ const { exclude } = require('inquirer/lib/objects/separator');
 
 const entrySelect = ['View All Employees', 'View All Departments', 'View All Roles', 
     'Add A Department', 'Add A Role', 'Add An Employee', 
-    'Update Employee Role', 'Update Employee Manager', 'Quit'];
+    'Update Employee Role', 'Quit'];
 
 // calls the module to print the app name
 printToScreen.appName();
@@ -145,36 +145,61 @@ const promptAddAnEmployee = () => {
             message: "Who is employee's manager? ",
             choices: managerSelection
         }
-    ]).then((newEmployee) => {
-        addAnEmployee(newEmployee);
-    });
+    ]);
+}
+
+const promptUpdateRole = () => {
+
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'employeeToUpdate',
+            message: "Which employee's role requires updating? ",
+            choices: managerSelection // == employee's list
+        },
+        {
+            type: 'list',
+            name: 'updatedRole',
+            message: "What is the employee's updated role? ",
+            choices: availableRoles
+        },
+        {
+            type: 'list',
+            name: 'roleId',
+            message: "Who is the employee's new manager? ",
+            choices: managerSelection
+        }
+    ]);
 }
 
 // Starting point, prompting for user choice
 promptUserChoice()
-    .then( async choice => {
+    .then(choice => {
         while (choice.selectedOption !== 'Quit') {
             if (choice.selectedOption === 'View All Employees') {
-                return await viewAllEmployees();
+                viewAllEmployees();
             } else if (choice.selectedOption === 'View All Departments') {
-                return await viewAllDepartments();
+                viewAllDepartments();
             } else if (choice.selectedOption === 'View All Roles') {
-                return await viewAllRoles();
+                viewAllRoles();
             } else if (choice.selectedOption === 'Add A Department') {
-                return promptAddAdept().then((deptName) => {
+                promptAddAdept().then((deptName) => {
                     addAdepartment(deptName);
                 }).then(() => {promptUserChoice()});
             } else if (choice.selectedOption === 'Add A Role') {
-                return promptAddArole().then((newRole) => {
+                promptAddArole().then((newRole) => {
                     addArole(newRole);
                 });
             } else if (choice.selectedOption === 'Add An Employee') {
-                return promptAddAnEmployee() 
-            // } else if (choice.selectedOption === 'Update Employee Role') {
-
-            // } else if (choice.selectedOption === 'Update Employee Manager') {
+                promptAddAnEmployee().then((newEmployee) => {
+                    addAnEmployee(newEmployee);
+                });
+            } else if (choice.selectedOption === 'Update Employee Role') {
+                promptUpdateRole().then((updateRole) => {
+                    updateEmployee(updateRole);
+                });
             }
-            
+
 
         }
     })
