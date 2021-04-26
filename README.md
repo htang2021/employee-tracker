@@ -53,6 +53,12 @@ This instruction below assumes that a project and repo were already created on g
 9. Exit SQL> by typing exit;
 10. Issue command 'npm start' to run the application, select 'Quit' to exit out of application.
 
+## Known Issues
+- In a default git-bash environment, the screen does not scroll properly and thus causes the output and instruction to overlap that makes it hard to read
+- Employee role update does not work
+- After the initial pass of the selection prompt, and displays its output, the second pass of the selection prompt does not get executed - recursive logic has not been implemented
+- Code should be refactored
+
 ## Testing
 - Able to view table role
 - Able to view table department
@@ -66,4 +72,4 @@ This instruction below assumes that a project and repo were already created on g
 ## Questions
 Feel free to reach out to [me](mailto:hungtang@hotmail.com).
 
-End of README.md - updated by Hung Tang on 4/25/21
+README.md - updated by Hung Tang on 4/25/21
