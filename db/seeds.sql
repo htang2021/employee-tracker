@@ -1,47 +1,19 @@
 INSERT INTO department (dept_name)
 VALUES ('Executive Office'),
-    ('Human Resources'),
-    ('Marketing'),
-    ('Engineering'),
-    ('Quality Assurance'),
-    ('Operations & Procurement'),
     ('Sales'),
-    ('Legal'),
-    ('Product Management'),
-    ('Accounting'),
-    ('Professional Services');
+    ('Human Resources'),
+    ('Engineering');
 
 INSERT INTO role (title, salary, department_id)
-VALUES ('CEO', 320000, 1),
-    ('VP, HR', 200000, 2),
-    ('VP, Sales', 150000, 7),
-    ('VP, Marketing', 90000, 3),
-    ('VP, Procurement', 250000, 6),
-    ('VP, Engineering', 250000, 4),
-    ('VP, Product', 250000, 9),
-    ('Director, Accounting', 175000, 10),
-    ('Marketing Associate', 70000, 3),
-    ('HR Associate', 80000, 2),
-    ('Senior Engineer', 150000, 4),
-    ('Staff Engineer', 180000, 4),
-    ('Sales Manager', 80000, 7),
-    ('Engineering Manager', 180000, 4),
-    ('Director, Product', 220000, 9),
-    ('Product Manager', 160000, 9),
-    ('Procurement Manager', 130000, 6);
+VALUES ('CEO', 250000, 1),
+    ('VP, Sales', 150000, 2),
+    ('Manager, HR', 120000, 3),
+    ('Director, Engineering', 230000, 4),
+    ('Sr Engineer', 150000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ('Hung', 'CEO', 1, 1),
-    ('Erica', "VPEngineering", 6, 1),
-    ('Sam', 'MarketingVP', 4, 1),
-    ('Phil', 'MarketingAssociate', 9, 3),
-    ('Ahmad', 'ProductDirector', 15, 1),
-    ('John', 'Hrassociate', 10, 8),
-    ('Amy', 'ProcurementVP', 5, 1),
-    ('Samantha', 'VPofHR', 2, 1),
-    ('Cindy', 'Srengineer', 11, 10),
-    ('Beth', 'EngrManager', 14, 2),
-    ('Jimmy', 'SalesVP', 3, 1),
-    ('Kyle', 'SalesMgr', 13, 11),
-    ('Joe', 'ProductMgr', 16, 5),
-    ('Liz', 'ProcurementMgr', 17, 7);
+    ('Jimmy', 'SalesVP', 2, 1),
+    ('John', 'HRManager', 3, 1),
+    ('Erica', 'EngineeringDir', 4, 1),
+    ('Beth', 'SrEngineer', 5, 4);

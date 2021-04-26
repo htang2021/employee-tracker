@@ -9,6 +9,7 @@ const connection = mysql.createConnection({
     database: 'employee_tracker'
 });
 
+// function to join 3 tables in DB to display in a single table to the user
 function viewAllEmployees() {
 
     const sql = `SELECT employee2.id AS employee_id, employee2.first_name, 
@@ -27,12 +28,14 @@ function viewAllEmployees() {
             console.log(err.message );
             return;
         }
+        // displays a 3-tables joined results
         console.log(' ');
-        return console.table(rows); 
+        console.table(rows); 
     });
-    // return;
+    return;
 }
 
+// function to display the department table from the DB
 function viewAllDepartments() {
 
     const sql = `SELECT * FROM department`;
@@ -41,29 +44,14 @@ function viewAllDepartments() {
             console.log(err.message );
             return;
         }
-        let newArry = json(rows);
-        console.log('*************');
-        console.log(newArry);
-        console.log('===============');
-
-        let rowsObjArry = JSON.stringify(rows);
-        console.log('');
-        console.log(rowsObjArry);
-        let newRowObj = rowsObjArry.split('}');
-        console.log(newRowObj);
-
-        console.log(rowsObjArry[0], rowsObjArry[1], rowsObjArry[2]);
-
-        // rowsObjArry.forEach(element => {
-        //     console.log(element.dept_name);
-        // });
-
+        // displays department table from DB
         console.log(' ');
         console.table(rows);
-        // return rowsObj;
     });
+    return;
 }
 
+// function to display the role table from DB
 function viewAllRoles() {
 
     const sql = `SELECT * FROM role`;
@@ -74,10 +62,8 @@ function viewAllRoles() {
         }
         console.log(' ');
         console.table(rows);
-        return;
     });
+    return;
 }
-
-// viewAllEmployees();
 
 module.exports = { viewAllEmployees, viewAllDepartments, viewAllRoles };

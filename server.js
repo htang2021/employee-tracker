@@ -1,23 +1,27 @@
 const inquirer = require('inquirer');
+
+// imports print function to display app name
 const printToScreen = require('./utils/initAppName');
 
+// import a function to create the roles array
+const availableRoles = require('./utils/rolesList');
+// import a function to create the managers list array
+const managerSelection = require('./utils/managersList'); 
+
+// Importing all view functions
 const { viewAllEmployees, 
     viewAllDepartments, 
     viewAllRoles } = require('./utils/viewQuery');
 
+// Importing all add functions 
 const { addAdepartment,
     addArole,
     addAnEmployee } = require('./utils/addQuery');
 
-const { exclude } = require('inquirer/lib/objects/separator');
-
 const {updateEmployee} = require('./utils/updateQuery');
 
-    // let departments = JSON.parse(viewAllDepartments);
-    // console.log(viewAllDepartments);
+const { exclude } = require('inquirer/lib/objects/separator');
 
-const currentRoles = ['Engineer', 'Manager', 'Director', 'VP'];
-const selectManager = ['Bob', 'Hung', 'Amy', 'Beth'];
 
 const entrySelect = ['View All Employees', 'View All Departments', 'View All Roles', 
     'Add A Department', 'Add A Role', 'Add An Employee', 
@@ -133,43 +137,44 @@ const promptAddAnEmployee = () => {
             type: 'list',
             name: 'roleId',
             message: "What is the employee's role? ",
-            choices: currentRoles
+            choices: availableRoles
         },
         {
             type: 'list',
             name: 'yourManager',
             message: "Who is employee's manager? ",
-            choices: selectManager
+            choices: managerSelection
         }
-    ]);
+    ]).then((newEmployee) => {
+        addAnEmployee(newEmployee);
+    });
 }
 
 // Starting point, prompting for user choice
 promptUserChoice()
-    .then(choice => {
-        if (choice.selectedOption === 'Quit') {
-            process.exit(0);
-        } else if (choice.selectedOption === 'View All Employees') {
-            return viewAllEmployees();
-        } else if (choice.selectedOption === 'View All Departments') {
-            return viewAllDepartments();
-        } else if (choice.selectedOption === 'View All Roles') {
-            return viewAllRoles();
-        } else if (choice.selectedOption === 'Add A Department') {
-            return promptAddAdept().then((deptName) => {
-                addAdepartment(deptName);
-            });
-        } else if (choice.selectedOption === 'Add A Role') {
-            return promptAddArole().then((newRole) => {
-                addArole(newRole);
-            });
-        } else if (choice.selectedOption === 'Add An Employee') {
-            return promptAddAnEmployee().then((newEmployee) => {
-                addAnEmployee(newEmployee);
-            });
-        // } else if (choice.selectedOption === 'Update Employee Role') {
+    .then( async choice => {
+        while (choice.selectedOption !== 'Quit') {
+            if (choice.selectedOption === 'View All Employees') {
+                return await viewAllEmployees();
+            } else if (choice.selectedOption === 'View All Departments') {
+                return await viewAllDepartments();
+            } else if (choice.selectedOption === 'View All Roles') {
+                return await viewAllRoles();
+            } else if (choice.selectedOption === 'Add A Department') {
+                return promptAddAdept().then((deptName) => {
+                    addAdepartment(deptName);
+                }).then(() => {promptUserChoice()});
+            } else if (choice.selectedOption === 'Add A Role') {
+                return promptAddArole().then((newRole) => {
+                    addArole(newRole);
+                });
+            } else if (choice.selectedOption === 'Add An Employee') {
+                return promptAddAnEmployee() 
+            // } else if (choice.selectedOption === 'Update Employee Role') {
 
-        // } else if (choice.selectedOption === 'Update Employee Manager') {
+            // } else if (choice.selectedOption === 'Update Employee Manager') {
+            }
+            
 
         }
     })
